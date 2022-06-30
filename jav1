@@ -1,0 +1,136 @@
+public class SinglyLinkedList{
+	public Node head = null;
+	public Node tail = null;
+class Node{
+	int data;
+	Node next;
+	
+	public Node(int data)
+	{
+		this.data = data;
+		this.next = null;
+	}
+}
+	
+	public void addNode(int data)
+	{
+		Node newNode = new Node(data);
+		//if list is empty , both head and tail point to newNode..
+		if(head == null){
+		head = newNode;
+		tail = newNode;
+		
+		}
+		else {
+			tail.next = newNode;
+			tail = newNode;
+		}
+	}
+	public void display(){
+		Node current=head;
+		
+		if (head == null){
+			System.out.println("List is empty");
+			return;
+		}
+		
+		while(current!= null){
+			System.out.print(current.data+" ");
+			current = current.next;
+		}
+		System.out.println();
+	}
+	public void insert(int data)
+	{
+		
+		Node newNode = new Node(data);
+		Node current=head;
+		if(head == null){
+			
+			head = newNode;
+			head.next = null;
+		}
+		else{
+			newNode.next =head;
+			System.out.println("kkkk");
+			head = newNode;
+		}
+	}
+	public void insertAtEnd(int data)
+	{
+		Node newNode = new Node(data);
+		Node Current = tail;
+		if(head  ==null){
+			head = newNode;
+			tail = newNode;
+			
+		}
+		else 
+		{
+			tail.next = newNode;
+			tail = newNode;
+		}
+		
+	}
+	public void insertPos(int data,int pos)
+	{
+		Node newNode = new Node(data);
+		Node current=head;
+		if(pos<1)
+		{
+			System.out.println("Position should be>=1");
+			
+		}
+		else 
+		{
+			for(int i=2;i<pos;i++)
+			{
+				current = current.next;
+			}
+			newNode.next = current.next;
+			current.next = newNode;
+		}
+	}
+	
+	public void delete(int data){
+		
+		Node newNode = new Node(data);
+		//Node current = head;
+		if (head ==null){
+			System.out.println("list is empty");
+		}
+		else{
+			head = head.next;
+		}
+	}
+	public void deleteAtEnd(int data)
+	{
+		Node newNode =   new Node(data);
+		Node current = head;
+		
+		while(current.next != null)
+		{
+			current = current.next;
+		}
+		current.next = null;
+	}
+	
+
+}class main{
+	public static void main(String []args){
+		SinglyLinkedList sList = new SinglyLinkedList();
+		sList.addNode(5);
+		sList.addNode(1);
+		sList.addNode(3);
+		sList.addNode(8);
+		sList.addNode(2);
+		//sList.insert(100);
+		//sList.insertAtEnd(44);
+		//sList.insertPos(21,3);
+		sList.delete(5);
+		sList.deleteAtEnd(0);
+		sList.display();
+	}
+}
+
+
